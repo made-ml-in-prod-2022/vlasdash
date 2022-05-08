@@ -1,0 +1,35 @@
+input_data_path: "data/raw/heart_cleveland_upload.csv"
+output_model_path: "models/model.pkl"
+metric_path: "models/metrics.json"
+transformer_path: "models/transformer.pkl"
+splitting_params:
+  valid_size: 0.2
+  random_state: 42
+  shuffle: True
+metric_params:
+    precision: True
+    recall: True
+    f1: True
+train_params:
+  model: "RandomForestClassifier"
+  model_forest_params:
+    random_state: 42
+    n_estimators: 50
+    max_depth: 5
+feature_params:
+  categorical:
+    - "cp"
+    - "restecg"
+    - "slope"
+    - "ca"
+    - "thal"
+    - "sex"
+    - "fbs"
+    - "exang"
+  numerical:
+    - "age"
+    - "trestbps"
+    - "chol"
+    - "thalach"
+    - "oldpeak"
+  target: "condition"

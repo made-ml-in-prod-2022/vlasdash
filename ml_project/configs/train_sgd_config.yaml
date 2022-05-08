@@ -1,0 +1,35 @@
+input_data_path: "data/raw/heart_cleveland_upload.csv"
+output_model_path: "models/model.pkl"
+metric_path: "models/metrics.json"
+transformer_path: "models/transformer.pkl"
+splitting_params:
+  valid_size: 0.2
+  random_state: 42
+  shuffle: True
+metric_params:
+    precision: True
+    recall: True
+    f1: False
+train_params:
+  model: "SGDClassifier"
+  model_sgd_params:
+    random_state: 42
+    penalty: "l2"
+    alpha: 0.0001
+feature_params:
+  categorical:
+    - "cp"
+    - "restecg"
+    - "slope"
+    - "ca"
+    - "thal"
+    - "sex"
+    - "fbs"
+    - "exang"
+  numerical:
+    - "age"
+    - "trestbps"
+    - "chol"
+    - "thalach"
+    - "oldpeak"
+  target: "condition"
