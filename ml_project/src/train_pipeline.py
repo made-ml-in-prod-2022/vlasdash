@@ -1,6 +1,6 @@
 import logging
-import sys
 import os
+from typing import Dict, Tuple
 import hydra
 from omegaconf import DictConfig
 
@@ -26,7 +26,9 @@ from models.predict_model import predict_model
 logger = logging.getLogger(__name__)
 
 
-def train_pipeline(training_pipeline_params: TrainingPipelineParams):
+def train_pipeline(
+        training_pipeline_params: TrainingPipelineParams
+) -> Tuple[str, str, Dict[str, float]]:
     logger.info(f"Start train pipeline with model {training_pipeline_params.train_params.model}")
     data = load_dataset(training_pipeline_params.input_data_path)
     logger.info(f"data shape is {data.shape}")
