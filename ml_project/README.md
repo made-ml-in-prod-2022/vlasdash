@@ -1,8 +1,30 @@
-Homework 1
-==============================
+# Homework 1
+Можно обучить две модели: SGDClassifier и RandomForestClassifier
 
-Структура проекта
-------------
+Запуск с конфигурацией для RandomForestClassifier:
+~~~
+python src/train_pipeline.py —config-name="train_forest_config"
+~~~
+
+Запуск с конфигурацией для SGDClassifier:
+~~~
+python src/train_pipeline.py —config-name="train_sgd_config"
+~~~
+
+Сделать предсказание:
+~~~
+python src/predict_pipeline.py —config-name="predict_config"
+~~~
+
+Запуск тестов:
+~~~
+cd src
+python -m unittest run_tests.TestAll.run_all
+~~~
+
+## Датасет
+Для выполнения дз использовались следующие данные: https://www.kaggle.com/datasets/cherngs/heart-disease-cleveland-uci
+## Структура проекта
 
     ├── README.md             <- The top-level README for developers using this project.
     ├── data
@@ -61,3 +83,4 @@ Homework 1
 --------
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+ 
