@@ -21,6 +21,24 @@ Homework 1
         ├── data              <- Scripts to download or generate data
         │   └── make_dataset.py
         │
+        ├── entities          <- Dataclasses
+        │    │
+        │    ├── feature_params.py
+        │    │
+        │    ├── metric_params.py
+        │    │	      
+        │    ├── model_forest_params.py
+        │    │
+        │    ├── model_sgd_params.py
+        │    │
+        │    ├── predict_pipeline_params.py
+        │    │
+        │    ├── splitting_params.py
+        │    │
+        │    ├── train_pipeline_params.py
+        │    │
+        │    └── training_params.py
+        │
         ├── features          <- Scripts to turn raw data into features for modeling
         │    │
         │    └── build_features.py
@@ -30,14 +48,14 @@ Homework 1
         │    ├── predict_model.py
         │    └── train_model.py
         │
-        ├── tests             <- Scripts to test code 
+        ├ tests               <- Scripts to test code 
         │
         │
         ├ train_pipeline.py   <- Scripts to train pipeline
         │
         ├ predict_pipeline.py <- Scripts to predict pipeline
         │
-        ├ run_tests.py        <- Scripts to run all tests
+        └ run_tests.py        <- Scripts to run all tests
 
 
 --------
