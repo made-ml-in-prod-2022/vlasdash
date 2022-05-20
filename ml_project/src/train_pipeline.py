@@ -35,8 +35,8 @@ def train_pipeline(
     :return: the paths to the model, transformer and metrics on validation
     """
 
-    logger.info(f"""Start train pipeline with model
-                    {training_pipeline_params.train_params.model}""")
+    logger.info("Start train pipeline with model "
+                f"{training_pipeline_params.train_params.model}")
     data = load_dataset(training_pipeline_params.input_data_path)
     logger.info(f"data shape is {data.shape}")
     train_df, valid_df = split_dataset(

@@ -26,8 +26,8 @@ def predict_pipeline(predict_pipeline_params: PredictPipelineParams) -> str:
     :return: path to the prediction file
     """
 
-    logger.info(f"""Start predict pipeline with model
-                    from {predict_pipeline_params.model_path}""")
+    logger.info("Start predict pipeline with model "
+                f"from {predict_pipeline_params.model_path}")
     test_df = load_dataset(predict_pipeline_params.input_data_path)
     logger.info(f"data shape is {test_df.shape}")
 
