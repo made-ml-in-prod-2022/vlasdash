@@ -24,7 +24,10 @@ def generate_dataset(dataset_size: int) -> pd.DataFrame:
     dataset["trestbps"] = np.random.randint(60, 200, size=dataset_size)
     dataset["chol"] = np.random.randint(120, 600, size=dataset_size)
     dataset["thalach"] = np.random.randint(70, 200, size=dataset_size)
-    dataset["oldpeak"] = np.round(np.random.uniform(0, 7, size=dataset_size), 1)
+    dataset["oldpeak"] = np.round(
+        np.random.uniform(0, 7, size=dataset_size),
+        1
+    )
     dataset["condition"] = np.random.randint(0, 2, size=dataset_size)
 
     return dataset

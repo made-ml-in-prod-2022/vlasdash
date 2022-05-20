@@ -31,10 +31,10 @@ def write_prediction(
     :return:
     """
 
-    with open(path, 'w') as sf:
-        sf.write("id,prediction\n")
+    with open(path, 'w') as file:
+        file.write("id,prediction\n")
         for i in range(prediction.size):
-            sf.write(f"{i},{prediction[i]}\n")
+            file.write(f"{i},{prediction[i]}\n")
 
     return path
 
@@ -46,7 +46,7 @@ def deserialize_model(path: str) -> SklearnClassifierModel:
     :return: model
     """
 
-    with open(path, "rb") as sf:
-        model = pickle.load(sf)
+    with open(path, "rb") as file:
+        model = pickle.load(file)
 
     return model

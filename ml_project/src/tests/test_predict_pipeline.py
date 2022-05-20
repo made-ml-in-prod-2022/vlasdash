@@ -27,8 +27,16 @@ class TestPredictPipeline(unittest.TestCase):
             transformer_path=transformer_path,
             prediction_path=expected_prediction_path,
         )
-        categorical = ["cp", "restecg", "slope", "ca", "thal", "sex",
-                            "fbs", "exang"]
+        categorical = [
+            "cp",
+            "restecg",
+            "slope",
+            "ca",
+            "thal",
+            "sex",
+            "fbs",
+            "exang"
+        ]
         numerical = ["age", "trestbps", "chol", "thalach", "oldpeak"]
         target = "condition"
         feature_params = FeatureParams(

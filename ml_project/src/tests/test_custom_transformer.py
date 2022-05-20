@@ -19,8 +19,10 @@ class TestCustomMinMaxScaler(unittest.TestCase):
         self.scaler.fit(self.dataset)
         result = self.scaler.transform(self.dataset)
 
-        self.assertEqual(result.all(),
-                         np.array([[0, 3/5, 1], [1, 1, 0], [0.5, 0, 2/7]]).all())
+        self.assertEqual(
+            result.all(),
+            np.array([[0, 3/5, 1], [1, 1, 0], [0.5, 0, 2/7]]).all()
+        )
         self.assertIsInstance(result, np.ndarray)
 
 

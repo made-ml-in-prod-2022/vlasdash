@@ -1,6 +1,6 @@
+import pickle
 import numpy as np
 import pandas as pd
-import pickle
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
@@ -51,33 +51,37 @@ def build_transformer(params: FeatureParams) -> ColumnTransformer:
     """
 
     return ColumnTransformer(
-        [("categorical_pipeline", build_categorical_pipeline(), params.categorical),
+        [(
+            "categorical_pipeline",
+            build_categorical_pipeline(),
+            params.categorical
+        ),
          ("numerical_pipeline", build_numerical_pipeline(), params.numerical)]
     )
 
 
 def make_features(
-        transformer: ColumnTransformer, df: pd.DataFrame
+        transformer: ColumnTransformer, features: pd.DataFrame
 ) -> pd.DataFrame:
     """Transform the features.
 
     :param transformer: data preprocessing transformer
-    :param df: input features
+    :param features: input features
     :return: transformed features
     """
 
-    return pd.DataFrame(transformer.transform(df))
+    return pd.DataFrame(transformer.transform(features))
 
 
-def get_target(df: pd.DataFrame, params: FeatureParams) -> pd.Series:
+def get_target(features: pd.DataFrame, params: FeatureParams) -> pd.Series:
     """Extracts target from features.
 
-    :param df: input features
+    :param features: input features
     :param params: parameters for features
     :return: target
     """
 
-    return df[params.target]
+    return features[params.target]
 
 
 def serialize_transformer(transformer: ColumnTransformer, output: str) -> str:
@@ -88,8 +92,8 @@ def serialize_transformer(transformer: ColumnTransformer, output: str) -> str:
     :return: recording path transformer
     """
 
-    with open(output, "wb") as sf:
-        pickle.dump(transformer, sf)
+    with open(output, "wb") as file:
+        pickle.dump(transformer, file)
     return output
 
 
@@ -100,6 +104,6 @@ def deserialize_transformer(path: str) -> ColumnTransformer:
     :return: transformer
     """
 
-    with open(path, "rb") as sf:
-        transformer = pickle.load(sf)
+    with open(path, "rb") as file:
+        transformer = pickle.load(file)
     return transformer

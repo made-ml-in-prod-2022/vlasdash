@@ -24,4 +24,9 @@ TrainingPipelineParamsSchema = class_schema(TrainingPipelineParams)
 
 
 def read_train_params_from_dict(cfg: DictConfig) -> TrainingPipelineParams:
+    """Reading parameters for model training pipeline.
+
+    :param cfg: config
+    :return: training pipeline parameters
+    """
     return TrainingPipelineParamsSchema().load(cfg)

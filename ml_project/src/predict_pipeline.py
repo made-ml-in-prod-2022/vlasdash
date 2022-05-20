@@ -25,7 +25,9 @@ def predict_pipeline(predict_pipeline_params: PredictPipelineParams) -> str:
     :param predict_pipeline_params: parameters for model prediction
     :return: path to the prediction file
     """
-    logger.info(f"Start predict pipeline with model from {predict_pipeline_params.model_path}")
+
+    logger.info(f"""Start predict pipeline with model
+                    from {predict_pipeline_params.model_path}""")
     test_df = load_dataset(predict_pipeline_params.input_data_path)
     logger.info(f"data shape is {test_df.shape}")
 
@@ -56,7 +58,10 @@ def predict_pipeline(predict_pipeline_params: PredictPipelineParams) -> str:
 @hydra.main(config_path="../configs", config_name="predict_config")
 def run_pipeline(cfg: DictConfig) -> None:
     params = read_predict_params_from_dict(cfg)
-    working_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    working_dir = os.path.abspath(os.path.join(
+        os.path.dirname(__file__),
+        '..',
+    ))
     os.chdir(working_dir)
     predict_pipeline(params)
 

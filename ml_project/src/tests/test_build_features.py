@@ -17,8 +17,18 @@ from tests.generate_dataset import generate_dataset
 
 
 class TestFeatures(unittest.TestCase):
+
     def setUp(self) -> None:
-        self.categorical = ["cp", "restecg", "slope", "ca", "thal", "sex", "fbs", "exang"]
+        self.categorical = [
+            "cp",
+            "restecg",
+            "slope",
+            "ca",
+            "thal",
+            "sex",
+            "fbs",
+            "exang"
+        ]
         self.numerical = ["age", "trestbps", "chol", "thalach", "oldpeak"]
         self.target = "condition"
         self.feature_params = FeatureParams(

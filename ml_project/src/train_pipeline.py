@@ -35,7 +35,8 @@ def train_pipeline(
     :return: the paths to the model, transformer and metrics on validation
     """
 
-    logger.info(f"Start train pipeline with model {training_pipeline_params.train_params.model}")
+    logger.info(f"""Start train pipeline with model
+                    {training_pipeline_params.train_params.model}""")
     data = load_dataset(training_pipeline_params.input_data_path)
     logger.info(f"data shape is {data.shape}")
     train_df, valid_df = split_dataset(
@@ -83,7 +84,10 @@ def train_pipeline(
         training_pipeline_params.metric_params,
     )
     logger.info(f"Metrics: {metrics}")
-    path_to_metrics = write_metrics(metrics, training_pipeline_params.metric_path)
+    path_to_metrics = write_metrics(
+        metrics,
+        training_pipeline_params.metric_path
+    )
     logger.info(f"Metrics was recorded to {path_to_metrics}")
 
     path_to_model = serialize_model(
@@ -105,7 +109,10 @@ def train_pipeline(
 @hydra.main(config_path="../configs", config_name="train_forest_config")
 def run_pipeline(cfg: DictConfig) -> None:
     params = read_train_params_from_dict(cfg)
-    working_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+    working_dir = os.path.abspath(os.path.join(
+        os.path.dirname(__file__),
+        '..'
+    ))
     os.chdir(working_dir)
     train_pipeline(params)
 

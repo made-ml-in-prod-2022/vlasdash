@@ -74,8 +74,8 @@ def serialize_model(model: SklearnClassifierModel, path: str) -> str:
     :return: recording path model
     """
 
-    with open(path, "wb") as sf:
-        pickle.dump(model, sf)
+    with open(path, "wb") as file:
+        pickle.dump(model, file)
 
     return path
 
@@ -88,7 +88,7 @@ def write_metrics(model_metrics: Dict[str, float], path: str):
     :return: recording path metrics
     """
 
-    with open(path, "w") as sf:
-        json.dump(model_metrics, sf)
+    with open(path, "w") as file:
+        json.dump(model_metrics, file)
 
     return path

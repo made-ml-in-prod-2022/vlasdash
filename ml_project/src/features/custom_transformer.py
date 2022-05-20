@@ -5,6 +5,12 @@ from sklearn.base import BaseEstimator, TransformerMixin
 class CustomMinMaxScaler(BaseEstimator, TransformerMixin):
     """Custom MinMaxScaler."""
 
+    def __init__(self):
+        """Init transformer. """
+
+        self.min = None
+        self.max = None
+
     def fit(self, dataset: np.ndarray):
         """Fit custom transformer.
 

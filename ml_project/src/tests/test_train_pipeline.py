@@ -21,7 +21,16 @@ class TestTrainPipeline(unittest.TestCase):
         expected_model_path = "tests/resource/test_model.plk"
         expected_metric_path = "tests/resource/test_metrics.json"
         expected_transformer_path = "tests/resource/test_transformer.plk"
-        categorical = ["cp", "restecg", "slope", "ca", "thal", "sex", "fbs", "exang"]
+        categorical = [
+            "cp",
+            "restecg",
+            "slope",
+            "ca",
+            "thal",
+            "sex",
+            "fbs",
+            "exang"
+        ]
         numerical = ["age", "trestbps", "chol", "thalach", "oldpeak"]
         target = "condition"
         params = TrainingPipelineParams(
@@ -45,7 +54,8 @@ class TestTrainPipeline(unittest.TestCase):
                 f1=False
             ),
         )
-        real_model_path, real_transformer_path, metrics = train_pipeline(params)
+        real_model_path, real_transformer_path, metrics \
+            = train_pipeline(params)
 
         self.assertEqual(expected_model_path, real_model_path)
         self.assertEqual(expected_transformer_path, real_transformer_path)
