@@ -13,13 +13,18 @@ from features.build_features import deserialize_transformer
 from models.predict_model import (
     deserialize_model,
     write_prediction,
-    predict_model
+    predict_model,
 )
 
 logger = logging.getLogger(__name__)
 
 
 def predict_pipeline(predict_pipeline_params: PredictPipelineParams) -> str:
+    """Prediction model pipelining.
+
+    :param predict_pipeline_params: parameters for model prediction
+    :return: path to the prediction file
+    """
     logger.info(f"Start predict pipeline with model from {predict_pipeline_params.model_path}")
     test_df = load_dataset(predict_pipeline_params.input_data_path)
     logger.info(f"data shape is {test_df.shape}")

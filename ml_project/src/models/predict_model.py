@@ -11,12 +11,26 @@ SklearnClassifierModel = Union[SGDClassifier, RandomForestClassifier]
 def predict_model(
     model: SklearnClassifierModel, features: pd.DataFrame
 ) -> np.ndarray:
+    """Makes model predictions.
+
+    :param model: model
+    :param features: input features
+    :return: model predictions
+    """
+
     return model.predict(features)
 
 
 def write_prediction(
     prediction: np.ndarray, path: str
 ) -> str:
+    """Writes the model predictions to a file.
+
+    :param prediction: model predictions
+    :param path: a way to record predictions
+    :return:
+    """
+
     with open(path, 'w') as sf:
         sf.write("id,prediction\n")
         for i in range(prediction.size):
@@ -26,6 +40,12 @@ def write_prediction(
 
 
 def deserialize_model(path: str) -> SklearnClassifierModel:
+    """Deserialization of the model.
+
+    :param path: path to model
+    :return: model
+    """
+
     with open(path, "rb") as sf:
         model = pickle.load(sf)
 

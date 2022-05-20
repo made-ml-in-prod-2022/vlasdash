@@ -29,6 +29,12 @@ logger = logging.getLogger(__name__)
 def train_pipeline(
         training_pipeline_params: TrainingPipelineParams
 ) -> Tuple[str, str, Dict[str, float]]:
+    """Train model pipeline.
+
+    :param training_pipeline_params: parameters for model training
+    :return: the paths to the model, transformer and metrics on validation
+    """
+
     logger.info(f"Start train pipeline with model {training_pipeline_params.train_params.model}")
     data = load_dataset(training_pipeline_params.input_data_path)
     logger.info(f"data shape is {data.shape}")

@@ -3,6 +3,12 @@ import pandas as pd
 
 
 def generate_dataset(dataset_size: int) -> pd.DataFrame:
+    """Generate dataset for test
+
+    :param dataset_size: size of generate dataset
+    :return: generated dataset
+    """
+
     np.random.seed(42)
     dataset = pd.DataFrame()
 
