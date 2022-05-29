@@ -13,6 +13,10 @@ logger.addHandler(stream_handler)
 @click.command(name="send_request")
 @click.argument("path_to_data")
 def send_request(path_to_data: str):
+    """Send request to app.
+        :param path_to_data: path to data for request
+    """
+
     data = pd.read_csv(path_to_data)
     length = len(data)
 

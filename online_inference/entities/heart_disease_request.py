@@ -3,6 +3,8 @@ from fastapi import HTTPException
 
 
 class HeartDiseaseRequest(BaseModel):
+    """Request from app."""
+
     id: int
     age: int
     sex: int

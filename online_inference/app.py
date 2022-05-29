@@ -17,11 +17,21 @@ app = FastAPI()
 
 
 def load_model(path: str) -> Pipeline:
+    """Deserialize model.
+        :param path: path to model
+        :return: deserialized model
+    """
+
     with open(path, "rb") as stream:
         return pickle.load(stream)
 
 
 def load_transformer(path: str) -> ColumnTransformer:
+    """Deserialize transformer.
+        :param path: path to transformer
+        :return: deserialized transformer
+    """
+
     with open(path, "rb") as stream:
         return pickle.load(stream)
 
@@ -31,6 +41,13 @@ def make_predict(
         model: Pipeline,
         transformer: ColumnTransformer,
 ) -> List[ConditionResponse]:
+    """Deserialize transformer.
+        :param data: input data for predict
+        :param model: model
+        :param transformer: transformer
+        :return: deserialized transformer
+    """
+
     data = pd.DataFrame(jsonable_encoder(data))
     transform_data = transformer.transform(data.drop(["id"], axis=1))
     ids = list(data["id"])
@@ -45,11 +62,15 @@ def make_predict(
 
 @app.get("/")
 def main():
+    """Start page."""
+
     return "This app predicts heart disease"
 
 
 @app.on_event("startup")
 def load_pipline():
+    """Load transformer and model."""
+
     global model
     global transformer
     model_path = os.getenv("PATH_TO_MODEL")

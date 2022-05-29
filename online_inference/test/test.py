@@ -2,6 +2,8 @@ import requests
 
 
 def test_predict():
+    """Test correct work online inference predictions."""
+
     request = [
       {
         "id": 0,
