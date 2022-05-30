@@ -1,14 +1,14 @@
 # Homework 2
 ## Запуск локально с помощью Docker
 ~~~
-docker build -t whoemta/hw2:v2 .
-docker run -p 8000:8000 whoemta/hw2:v2
+docker build -t vlasdash/hw2:v1 .
+docker run -p 8000:8000 vlasdash/hw2:v1
 ~~~
 
 ## Запуск из DockerHub
 ~~~
-docker pull whoemta/hw2:v2
-docker run -p 8000:8000 whoemta/hw2:v2
+docker pull vlasdash/hw2:v1
+docker run -p 8000:8000 vlasdash/hw2:v1
 ~~~
 
 ## Запуск тестов
